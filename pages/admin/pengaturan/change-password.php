@@ -5,48 +5,60 @@ session_start();
 
 header('Content-Type: application/json');
 
-if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin_kecamatan') {
+if (!isset($_SESSION['user_id'])) {
     echo json_encode(['success' => false, 'message' => 'Unauthorized']);
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
     exit();
 }
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-if (!isset($input['old_password']) || !isset($input['new_password'])) {
-    echo json_encode(['success' => false, 'message' => 'Missing required fields']);
+$old_password = $input['old_password'] ?? '';
+$new_password = $input['new_password'] ?? '';
+
+if (empty($old_password) || empty($new_password)) {
+    echo json_encode(['success' => false, 'message' => 'Password lama dan baru wajib diisi']);
+    exit();
+}
+
+if (strlen($new_password) < 6) {
+    echo json_encode(['success' => false, 'message' => 'Password baru minimal 6 karakter']);
     exit();
 }
 
 try {
     $queries = new Queries();
     
-    // Get current user
+    // Get current user data
     $stmt = $queries->db->prepare("SELECT password FROM user WHERE id_user = ?");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if (!$user) {
-        throw new Exception('User not found');
+        echo json_encode(['success' => false, 'message' => 'User tidak ditemukan']);
+        exit();
     }
     
     // Verify old password
-    if (!password_verify($input['old_password'], $user['password'])) {
-        throw new Exception('Password lama tidak benar');
+    if (!password_verify($old_password, $user['password'])) {
+        echo json_encode(['success' => false, 'message' => 'Password lama tidak benar']);
+        exit();
     }
     
+    // Hash new password
+    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+    
     // Update password
-    $hashedPassword = password_hash($input['new_password'], PASSWORD_DEFAULT);
     $stmt = $queries->db->prepare("UPDATE user SET password = ? WHERE id_user = ?");
-    $stmt->execute([$hashedPassword, $_SESSION['user_id']]);
+    $stmt->execute([$hashed_password, $_SESSION['user_id']]);
     
     echo json_encode(['success' => true, 'message' => 'Password berhasil diubah']);
     
 } catch (Exception $e) {
-    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
 }
 ?>

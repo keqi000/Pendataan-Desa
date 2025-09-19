@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'operator_desa') 
 }
 
 $queries = new Queries();
-$id_desa = $_SESSION['id_desa'];
+$id_desa = $_SESSION['user_desa'];
 $desa_info = $queries->getDesaById($id_desa);
 
 // Check if this is AJAX request

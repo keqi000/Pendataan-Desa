@@ -11,58 +11,82 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin_kecamatan'
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
     exit();
 }
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-$required = ['nama_lengkap', 'username', 'email', 'password', 'role'];
-foreach ($required as $field) {
-    if (!isset($input[$field]) || empty($input[$field])) {
-        echo json_encode(['success' => false, 'message' => "Field $field wajib diisi"]);
-        exit();
-    }
+$nama_lengkap = trim($input['nama_lengkap'] ?? '');
+$username = trim($input['username'] ?? '');
+$email = trim($input['email'] ?? '');
+$password = $input['password'] ?? '';
+$role = $input['role'] ?? '';
+$id_desa = $input['id_desa'] ?? null;
+
+if (empty($nama_lengkap) || empty($username) || empty($email) || empty($password) || empty($role)) {
+    echo json_encode(['success' => false, 'message' => 'Semua field wajib diisi']);
+    exit();
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode(['success' => false, 'message' => 'Format email tidak valid']);
+    exit();
+}
+
+if (strlen($password) < 6) {
+    echo json_encode(['success' => false, 'message' => 'Password minimal 6 karakter']);
+    exit();
 }
 
 try {
     $queries = new Queries();
     
-    // Check if username exists
+    // Check if username already exists
     $stmt = $queries->db->prepare("SELECT id_user FROM user WHERE username = ?");
-    $stmt->execute([$input['username']]);
+    $stmt->execute([$username]);
     if ($stmt->fetch()) {
-        throw new Exception('Username sudah digunakan');
+        echo json_encode(['success' => false, 'message' => 'Username sudah digunakan']);
+        exit();
     }
     
-    // Check if email exists
+    // Check if email already exists
     $stmt = $queries->db->prepare("SELECT id_user FROM user WHERE email = ?");
-    $stmt->execute([$input['email']]);
+    $stmt->execute([$email]);
     if ($stmt->fetch()) {
-        throw new Exception('Email sudah digunakan');
+        echo json_encode(['success' => false, 'message' => 'Email sudah digunakan']);
+        exit();
     }
     
     // Hash password
-    $hashedPassword = password_hash($input['password'], PASSWORD_DEFAULT);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
-    // Insert user
+    // Insert new user
     $stmt = $queries->db->prepare("
-        INSERT INTO user (nama_lengkap, username, email, password, role, id_desa, status_aktif) 
-        VALUES (?, ?, ?, ?, ?, ?, 'aktif')
+        INSERT INTO user (
+            nama_lengkap, 
+            username, 
+            email, 
+            password, 
+            role, 
+            id_desa, 
+            status_aktif,
+            created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, 'aktif', NOW())
     ");
     
     $stmt->execute([
-        $input['nama_lengkap'],
-        $input['username'],
-        $input['email'],
-        $hashedPassword,
-        $input['role'],
-        $input['id_desa']
+        $nama_lengkap,
+        $username,
+        $email,
+        $hashed_password,
+        $role,
+        $id_desa
     ]);
     
     echo json_encode(['success' => true, 'message' => 'User berhasil dibuat']);
     
 } catch (Exception $e) {
-    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
 }
 ?>

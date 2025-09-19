@@ -61,21 +61,7 @@ require_once __DIR__ . '/../../config/config.php';
                 </a>
             </li>
             
-            <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link <?php echo $current_page === 'analisis' ? 'active' : ''; ?>"
-                   onclick="loadPage('analisis')">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Analisis</span>
-                </a>
-            </li>
-            
-            <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link <?php echo $current_page === 'laporan' ? 'active' : ''; ?>"
-                   onclick="loadPage('laporan')">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Laporan</span>
-                </a>
-            </li>
+
             
             <?php else: ?>
             <!-- Menu Admin Kecamatan -->

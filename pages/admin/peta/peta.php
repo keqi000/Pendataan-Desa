@@ -497,7 +497,7 @@ if (!$is_ajax) {
 </div>
 
 <script>
-// Pass data to JavaScript
+// Pass data to JavaScript - ensure data is available immediately
 window.petaData = {
     desa: <?php echo json_encode($all_desa); ?>,
     fasilitas: <?php echo json_encode($all_fasilitas); ?>,
@@ -507,6 +507,17 @@ window.petaData = {
 
 // Pass BASE_URL to JavaScript
 window.BASE_URL = '<?php echo BASE_URL; ?>';
+
+// Mark data as ready
+window.petaDataReady = true;
+console.log('🗺️ [PHP] Peta data loaded:', {
+    desa: window.petaData.desa.length,
+    fasilitas: window.petaData.fasilitas.length, 
+    jalan: window.petaData.jalan.length,
+    jembatan: window.petaData.jembatan.length
+});
+console.log('🗺️ [PHP] BASE_URL set to:', window.BASE_URL);
+console.log('🗺️ [PHP] Peta data ready flag set to:', window.petaDataReady);
 </script>
 
 <?php

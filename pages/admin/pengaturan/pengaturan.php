@@ -23,9 +23,14 @@ $stmt = $queries->db->prepare("
 $stmt->execute();
 $all_users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $queries->db->prepare("SELECT id_desa, nama_desa FROM desa ORDER BY nama_desa");
+$stmt = $queries->db->prepare("SELECT * FROM desa ORDER BY nama_desa");
 $stmt->execute();
 $all_desa = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Get fresh desa data for management tab
+$stmt = $queries->db->prepare("SELECT * FROM desa ORDER BY nama_desa");
+$stmt->execute();
+$desa_management = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $is_ajax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
     strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
@@ -57,6 +62,9 @@ if (!$is_ajax) {
         </button>
         <button class="tab-btn" onclick="showTab('users')">
             <i class="fas fa-users"></i> Manajemen User
+        </button>
+        <button class="tab-btn" onclick="showTab('desa')">
+            <i class="fas fa-map-marked-alt"></i> Manajemen Desa
         </button>
     </div>
 
@@ -188,6 +196,50 @@ if (!$is_ajax) {
         </div>
     </div>
 
+    <!-- Desa Tab -->
+    <div id="desa-tab" class="tab-content">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-map-marked-alt"></i> Manajemen Desa</h3>
+                <button class="btn btn-primary" onclick="showCreateDesaModal()">
+                    <i class="fas fa-plus"></i> Tambah Desa
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Desa</th>
+                                <th>Luas Wilayah</th>
+                                <th>Jumlah Dusun</th>
+                                <th>RT/RW</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($desa_management as $index => $desa): ?>
+                            <tr>
+                                <td><?php echo $index + 1; ?></td>
+                                <td><?php echo htmlspecialchars($desa['nama_desa']); ?></td>
+                                <td><?php echo number_format($desa['luas_wilayah'] ?? 0, 2); ?> ha</td>
+                                <td><?php echo $desa['jumlah_dusun'] ?? 0; ?></td>
+                                <td><?php echo ($desa['jumlah_rt'] ?? 0) . '/' . ($desa['jumlah_rw'] ?? 0); ?></td>
+                                <td>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteDesa(<?php echo $desa['id_desa']; ?>, '<?php echo htmlspecialchars($desa['nama_desa']); ?>')">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Users Tab -->
     <div id="users-tab" class="tab-content">
         <div class="card">
@@ -231,6 +283,9 @@ if (!$is_ajax) {
                                     </span>
                                 </td>
                                 <td>
+                                    <button class="btn btn-sm btn-warning" onclick="editUser(<?php echo $user['id_user']; ?>)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
                                     <?php if ($user['id_user'] != $_SESSION['user_id']): ?>
                                     <button class="btn btn-sm btn-danger" onclick="deleteUser(<?php echo $user['id_user']; ?>, '<?php echo htmlspecialchars($user['nama_lengkap']); ?>')">
                                         <i class="fas fa-trash"></i>
@@ -242,6 +297,46 @@ if (!$is_ajax) {
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Desa Modal -->
+<div class="modal" id="createDesaModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tambah Desa Baru</h4>
+                <button type="button" class="close" onclick="closeCreateDesaModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createDesaForm">
+                    <div class="form-group">
+                        <label>Nama Desa:</label>
+                        <input type="text" id="createNamaDesa" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Luas Wilayah (ha):</label>
+                        <input type="number" id="createLuasWilayah" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah Dusun:</label>
+                        <input type="number" id="createJumlahDusun" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah RT:</label>
+                        <input type="number" id="createJumlahRT" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Jumlah RW:</label>
+                        <input type="number" id="createJumlahRW" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeCreateDesaModal()">Batal</button>
+                <button type="button" class="btn btn-primary" onclick="createDesa()">Simpan</button>
             </div>
         </div>
     </div>
@@ -294,6 +389,66 @@ if (!$is_ajax) {
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" onclick="closeCreateUserModal()">Batal</button>
                 <button type="button" class="btn btn-primary" onclick="createUser()">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit User Modal -->
+<div class="modal" id="editUserModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit User</h4>
+                <button type="button" class="close" onclick="closeEditUserModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="editUserForm">
+                    <input type="hidden" id="editUserId">
+                    <div class="form-group">
+                        <label>Nama Lengkap:</label>
+                        <input type="text" id="editNamaLengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username:</label>
+                        <input type="text" id="editUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password Baru (kosongkan jika tidak diubah):</label>
+                        <input type="password" id="editPassword">
+                    </div>
+                    <div class="form-group">
+                        <label>Role:</label>
+                        <select id="editRole" required>
+                            <option value="operator_desa">Operator Desa</option>
+                            <option value="admin_kecamatan">Admin Kecamatan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Desa:</label>
+                        <select id="editDesa">
+                            <option value="">- Pilih Desa -</option>
+                            <?php foreach ($all_desa as $desa): ?>
+                            <option value="<?php echo $desa['id_desa']; ?>"><?php echo htmlspecialchars($desa['nama_desa']); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status:</label>
+                        <select id="editStatus" required>
+                            <option value="aktif">Aktif</option>
+                            <option value="nonaktif">Non-aktif</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeEditUserModal()">Batal</button>
+                <button type="button" class="btn btn-primary" onclick="updateUser()">Update</button>
             </div>
         </div>
     </div>

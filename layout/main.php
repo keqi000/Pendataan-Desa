@@ -105,7 +105,7 @@ $current_page = $current_page ?? '';
     <script src="<?php echo BASE_URL; ?>layout/header/header.js"></script>
     <script src="<?php echo BASE_URL; ?>layout/sidebar/sidebar.js"></script>
     <script src="<?php echo BASE_URL; ?>layout/footer/footer.js"></script>
-    <script src="<?php echo BASE_URL; ?>layout/main-layout.js"></script></script>
+    <script src="<?php echo BASE_URL; ?>layout/main-layout.js"></script>
     
     <!-- Page specific JavaScript -->
     <?php if (isset($page_js)): ?>

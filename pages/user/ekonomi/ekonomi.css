@@ -1,0 +1,564 @@
+.ekonomi-container {
+    padding: 20px;
+    background: var(--bg-color);
+    min-height: 100vh;
+}
+
+.ekonomi-header {
+    margin-bottom: 30px;
+}
+
+.ekonomi-header h1 {
+    color: var(--primary-color);
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.ekonomi-breadcrumb {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.ekonomi-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.ekonomi-tab {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.ekonomi-tab:hover {
+    color: var(--primary-color);
+    background: var(--light-color);
+}
+
+.ekonomi-tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    background: var(--light-color);
+}
+
+.ekonomi-tab-content {
+    display: none;
+}
+
+.ekonomi-tab-content.active {
+    display: block;
+}
+
+.ekonomi-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.ekonomi-search {
+    position: relative;
+    min-width: 250px;
+}
+
+.ekonomi-search input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.ekonomi-search i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.ekonomi-filters {
+    display: flex;
+    gap: 15px;
+}
+
+.ekonomi-filters select {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    min-width: 150px;
+}
+
+.ekonomi-btn-primary {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ekonomi-btn-primary:hover {
+    background: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.ekonomi-btn-secondary {
+    background: var(--light-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.ekonomi-btn-secondary:hover {
+    background: var(--border-color);
+}
+
+.ekonomi-table-container {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+.ekonomi-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ekonomi-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.ekonomi-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.ekonomi-table tbody tr:hover {
+    background: var(--light-color);
+}
+
+.ekonomi-table .text-center {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 30px;
+}
+
+.ekonomi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.ekonomi-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.ekonomi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.ekonomi-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.ekonomi-card-title {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.ekonomi-card-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 5px 0 0 0;
+}
+
+.ekonomi-card-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.ekonomi-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ekonomi-card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ekonomi-card-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.ekonomi-card-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.ekonomi-card-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.action-btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-view {
+    background: #17a2b8;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Styles */
+.ekonomi-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.ekonomi-modal.show {
+    display: flex;
+}
+
+.ekonomi-modal-content {
+    background: var(--card-bg);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+[data-theme="light"] .ekonomi-modal-content {
+    background: #ffffff;
+}
+
+[data-theme="dark"] .ekonomi-modal-content {
+    background: #2c3e50;
+}
+
+.ekonomi-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ekonomi-modal-header h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.ekonomi-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 5px;
+}
+
+.ekonomi-modal-body {
+    padding: 25px;
+}
+
+.ekonomi-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.ekonomi-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ekonomi-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.ekonomi-form-group label {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.ekonomi-form-group input,
+.ekonomi-form-group select,
+.ekonomi-form-group textarea {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .ekonomi-form-group input,
+[data-theme="dark"] .ekonomi-form-group select,
+[data-theme="dark"] .ekonomi-form-group textarea {
+    border: 2px solid #555;
+    background: #34495e;
+    color: #ffffff;
+}
+
+.ekonomi-form-group input:focus,
+.ekonomi-form-group select:focus,
+.ekonomi-form-group textarea:focus {
+    outline: none;
+    border-color: #3F72AF;
+    box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.2);
+}
+
+.ekonomi-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 20px 25px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Status badges */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-aktif {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-non-aktif {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-ada {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-tidak-ada {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Currency formatting */
+.currency {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* Search Input Container */
+.search-input-container {
+    position: relative;
+}
+
+.search-input-container input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 0.95rem;
+}
+
+[data-theme="dark"] .search-input-container input[type="text"] {
+    border: 2px solid #555;
+    background: #34495e;
+    color: #ffffff;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+[data-theme="dark"] .search-results {
+    background: #34495e;
+    border-color: #555;
+}
+
+.search-result-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+[data-theme="dark"] .search-result-item {
+    border-bottom-color: #555;
+}
+
+.search-result-item:hover {
+    background: #f5f5f5;
+}
+
+[data-theme="dark"] .search-result-item:hover {
+    background: #2c3e50;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.search-result-nik {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ekonomi-container {
+        padding: 15px;
+    }
+    
+    .ekonomi-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .ekonomi-search {
+        min-width: auto;
+    }
+    
+    .ekonomi-filters {
+        flex-wrap: wrap;
+    }
+    
+    .ekonomi-table-container {
+        overflow-x: auto;
+    }
+    
+    .ekonomi-table {
+        min-width: 800px;
+    }
+    
+    .ekonomi-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .ekonomi-form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ekonomi-modal-content {
+        width: 95%;
+        margin: 20px;
+    }
+    
+    .ekonomi-tabs {
+        justify-content: flex-start;
+    }
+}

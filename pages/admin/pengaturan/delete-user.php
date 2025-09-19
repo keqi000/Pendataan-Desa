@@ -11,36 +11,39 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin_kecamatan'
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
     exit();
 }
 
 $input = json_decode(file_get_contents('php://input'), true);
+$user_id = $input['user_id'] ?? 0;
 
-if (!isset($input['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'User ID required']);
+if (!$user_id) {
+    echo json_encode(['success' => false, 'message' => 'ID user tidak valid']);
+    exit();
+}
+
+// Prevent deleting own account
+if ($user_id == $_SESSION['user_id']) {
+    echo json_encode(['success' => false, 'message' => 'Tidak dapat menghapus akun sendiri']);
     exit();
 }
 
 try {
     $queries = new Queries();
     
-    // Prevent self-deletion
-    if ($input['user_id'] == $_SESSION['user_id']) {
-        throw new Exception('Tidak dapat menghapus akun sendiri');
-    }
-    
     // Delete user
     $stmt = $queries->db->prepare("DELETE FROM user WHERE id_user = ?");
-    $stmt->execute([$input['user_id']]);
+    $stmt->execute([$user_id]);
     
     if ($stmt->rowCount() === 0) {
-        throw new Exception('User tidak ditemukan');
+        echo json_encode(['success' => false, 'message' => 'User tidak ditemukan']);
+        exit();
     }
     
     echo json_encode(['success' => true, 'message' => 'User berhasil dihapus']);
     
 } catch (Exception $e) {
-    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
 }
 ?>

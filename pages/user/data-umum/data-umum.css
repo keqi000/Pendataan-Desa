@@ -1,0 +1,495 @@
+.data-umum-container {
+    padding: 20px;
+    background: var(--bg-color);
+    min-height: 100vh;
+}
+
+.data-umum-header {
+    margin-bottom: 30px;
+}
+
+.data-umum-header h1 {
+    color: var(--primary-color);
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.data-umum-breadcrumb {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.data-umum-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.data-umum-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+.data-umum-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-umum-card-header h3 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.data-umum-btn-primary {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.data-umum-btn-primary:hover {
+    background: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.data-umum-btn-secondary {
+    background: var(--light-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.data-umum-btn-secondary:hover {
+    background: var(--border-color);
+}
+
+.data-umum-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.data-umum-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.data-umum-form-group label {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.data-umum-form-group input {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.data-umum-form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.1);
+}
+
+.data-umum-form-group input[readonly] {
+    background: var(--light-color);
+    color: var(--text-secondary);
+}
+
+.data-umum-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.koordinat-section {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.koordinat-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.map-container {
+    min-height: 300px;
+}
+
+.map-picker {
+    width: 100%;
+    height: 300px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.peta-desa-container {
+    width: 100%;
+}
+
+.peta-desa-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.peta-desa-map {
+    width: 100%;
+    height: 100%;
+    background: var(--light-color);
+}
+
+.peta-desa-legend {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.peta-desa-legend h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.legend-item:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.legend-item span {
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+.peta-desa-controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1000;
+}
+
+.peta-control-btn {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.peta-control-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.peta-desa-wrapper:fullscreen {
+    background: white;
+}
+
+.peta-desa-wrapper:fullscreen .peta-desa-map {
+    height: 100vh;
+}
+
+.peta-desa-wrapper:fullscreen .peta-control-btn .fa-expand:before {
+    content: "\f066";
+}
+
+.upload-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.upload-item h4 {
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--light-color);
+}
+
+.upload-area:hover {
+    border-color: var(--secondary-color);
+    background: rgba(63, 114, 175, 0.05);
+}
+
+.upload-area i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.upload-area p {
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+    font-weight: 500;
+}
+
+.upload-area small {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.uploaded-file {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--secondary-color);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.file-details h5 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.file-details p {
+    margin: 2px 0 0 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.file-action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-view {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+/* Modal Styles */
+.data-umum-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-umum-modal-content {
+    background: var(--card-bg);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.data-umum-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-umum-modal-header h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.data-umum-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 5px;
+}
+
+.data-umum-modal-body {
+    padding: 25px;
+}
+
+.koordinat-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-map {
+    width: 100%;
+    height: 400px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--light-color);
+}
+
+.data-umum-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding: 20px 25px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .data-umum-container {
+        padding: 15px;
+    }
+    
+    .data-umum-card {
+        padding: 20px;
+    }
+    
+    .data-umum-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .data-umum-form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .koordinat-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .upload-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .data-umum-form-actions {
+        flex-direction: column;
+    }
+    
+    .koordinat-input {
+        grid-template-columns: 1fr;
+    }
+    
+    .data-umum-modal-content {
+        width: 95%;
+        margin: 20px;
+    }
+}

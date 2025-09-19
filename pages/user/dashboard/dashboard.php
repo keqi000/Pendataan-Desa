@@ -12,15 +12,21 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'operator_desa') 
 $queries = new Queries();
 $desa_data = $queries->getDesaById($_SESSION['user_desa']);
 $stats_penduduk = $queries->getStatistikPenduduk($_SESSION['user_desa']);
+$keluarga_data = $queries->getKeluargaByDesa($_SESSION['user_desa']);
 $data_ekonomi = $queries->getDataEkonomi($_SESSION['user_desa']);
 $fasilitas_pendidikan = $queries->getFasilitasPendidikan($_SESSION['user_desa']);
 $umkm_data = $queries->getUMKM($_SESSION['user_desa']);
 $jalan_data = $queries->getInfrastrukturJalan($_SESSION['user_desa']);
 $jembatan_data = $queries->getInfrastrukturJembatan($_SESSION['user_desa']);
 
+// Debug logging
+error_log('🏠 [DASHBOARD-PHP] User Desa ID: ' . $_SESSION['user_desa']);
+error_log('🏠 [DASHBOARD-PHP] Keluarga Count: ' . count($keluarga_data));
+error_log('🏠 [DASHBOARD-PHP] Keluarga Data: ' . json_encode($keluarga_data));
+
 // Calculate dashboard statistics
 $total_penduduk = $stats_penduduk['total'] ?? 0;
-$total_kk = $stats_penduduk['kepala_keluarga']['jumlah_kk'] ?? 0;
+$total_kk = count($keluarga_data);
 $rata_anggota_kk = $total_kk > 0 ? round($total_penduduk / $total_kk, 1) : 0;
 
 // Count facilities by type
@@ -94,124 +100,146 @@ if (!$is_ajax) {
     </div>
     
     <div class="dashboard-user-stats">
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-school"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Fasilitas Pendidikan</div>
-                <div class="dashboard-user-stat-number"><?php echo $fasilitas_text; ?></div>
-                <div class="dashboard-user-stat-label">PAUD sampai SMP</div>
-            </div>
-        </div>
-        
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-store"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">UMKM Aktif</div>
-                <div class="dashboard-user-stat-number"><?php echo $total_sektor; ?></div>
-                <div class="dashboard-user-stat-label">sektor usaha</div>
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Fasilitas Pendidikan</div>
+                    <div class="dashboard-user-stat-number"><?php echo $fasilitas_text; ?></div>
+                    <div class="dashboard-user-stat-label">PAUD sampai SMP</div>
+                </div>
             </div>
         </div>
         
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-road"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Infrastruktur</div>
-                <div class="dashboard-user-stat-number"><?php echo $persentase_jalan_baik; ?>%</div>
-                <div class="dashboard-user-stat-label">Kondisi baik</div>
-            </div>
-        </div>
-        
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-home"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Kepala Keluarga</div>
-                <div class="dashboard-user-stat-number"><?php echo $rata_anggota_kk; ?></div>
-                <div class="dashboard-user-stat-label">Rata-rata anggota/KK</div>
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">UMKM Aktif</div>
+                    <div class="dashboard-user-stat-number"><?php echo $total_sektor; ?></div>
+                    <div class="dashboard-user-stat-label">sektor usaha</div>
+                </div>
             </div>
         </div>
         
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-hand-holding-heart"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Warga Miskin</div>
-                <div class="dashboard-user-stat-number"><?php echo $persentase_miskin; ?>%</div>
-                <div class="dashboard-user-stat-label">dari total penduduk</div>
-            </div>
-        </div>
-        
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-road"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Jalan Desa</div>
-                <div class="dashboard-user-stat-number"><?php echo $persentase_jalan_baik; ?>%</div>
-                <div class="dashboard-user-stat-label">kondisi baik</div>
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Infrastruktur</div>
+                    <div class="dashboard-user-stat-number"><?php echo $persentase_jalan_baik; ?>%</div>
+                    <div class="dashboard-user-stat-label">Kondisi baik</div>
+                </div>
             </div>
         </div>
         
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-map"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Luas Wilayah</div>
-                <div class="dashboard-user-stat-number"><?php echo number_format($desa_data['luas_wilayah'] ?? 0); ?></div>
-                <div class="dashboard-user-stat-label">hektar</div>
-            </div>
-        </div>
-        
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-map-marked-alt"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Dusun/RT/RW</div>
-                <div class="dashboard-user-stat-number"><?php echo ($desa_data['jumlah_dusun'] ?? 0) . '/' . ($desa_data['jumlah_rt'] ?? 0) . '/' . ($desa_data['jumlah_rw'] ?? 0); ?></div>
-                <div class="dashboard-user-stat-label">wilayah administratif</div>
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Kepala Keluarga</div>
+                    <div class="dashboard-user-stat-number"><?php echo $total_kk; ?></div>
+                    <div class="dashboard-user-stat-label">Total keluarga</div>
+                </div>
             </div>
         </div>
         
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Usia Sekolah</div>
-                <div class="dashboard-user-stat-number"><?php echo $anak_sekolah; ?></div>
-                <div class="dashboard-user-stat-label">Anak usia 7–18 tahun</div>
-            </div>
-        </div>
-        
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-briefcase"></i>
-            </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Sektor Usaha</div>
-                <div class="dashboard-user-stat-number"><?php echo $total_sektor; ?></div>
-                <div class="dashboard-user-stat-label">Jenis bidang usaha</div>
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Warga Miskin</div>
+                    <div class="dashboard-user-stat-number"><?php echo $persentase_miskin; ?>%</div>
+                    <div class="dashboard-user-stat-label">dari total penduduk</div>
+                </div>
             </div>
         </div>
         
-        <div class="dashboard-user-stat-card">
-            <div class="dashboard-user-stat-icon">
-                <i class="fas fa-bridge"></i>
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Jalan Desa</div>
+                    <div class="dashboard-user-stat-number"><?php echo $persentase_jalan_baik; ?>%</div>
+                    <div class="dashboard-user-stat-label">kondisi baik</div>
+                </div>
             </div>
-            <div class="dashboard-user-stat-content">
-                <div class="dashboard-user-stat-title">Jembatan</div>
-                <div class="dashboard-user-stat-number"><?php echo count($jembatan_data); ?></div>
-                <div class="dashboard-user-stat-label">Unit infrastruktur</div>
+        </div>
+        
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-map"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Luas Wilayah</div>
+                    <div class="dashboard-user-stat-number"><?php echo number_format($desa_data['luas_wilayah'] ?? 0); ?></div>
+                    <div class="dashboard-user-stat-label">hektar</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Dusun/RT/RW</div>
+                    <div class="dashboard-user-stat-number"><?php echo ($desa_data['jumlah_dusun'] ?? 0) . '/' . ($desa_data['jumlah_rt'] ?? 0) . '/' . ($desa_data['jumlah_rw'] ?? 0); ?></div>
+                    <div class="dashboard-user-stat-label">wilayah administratif</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Usia Sekolah</div>
+                    <div class="dashboard-user-stat-number"><?php echo $anak_sekolah; ?></div>
+                    <div class="dashboard-user-stat-label">Anak usia 7–18 tahun</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Sektor Usaha</div>
+                    <div class="dashboard-user-stat-number"><?php echo $total_sektor; ?></div>
+                    <div class="dashboard-user-stat-label">Jenis bidang usaha</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card dashboard-user-stat-card">
+            <div class="card-body">
+                <div class="dashboard-user-stat-icon">
+                    <i class="fas fa-bridge"></i>
+                </div>
+                <div class="dashboard-user-stat-content">
+                    <div class="dashboard-user-stat-title">Jembatan</div>
+                    <div class="dashboard-user-stat-number"><?php echo count($jembatan_data); ?></div>
+                    <div class="dashboard-user-stat-label">Unit infrastruktur</div>
+                </div>
             </div>
         </div>
     </div>
@@ -232,14 +260,7 @@ if (!$is_ajax) {
                             <i class="fas fa-chart-line"></i>
                             <span>Data Ekonomi</span>
                         </a>
-                        <a href="#" class="dashboard-user-action-btn" onclick="loadPage('analisis')">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Analisis Data</span>
-                        </a>
-                        <a href="#" class="dashboard-user-action-btn" onclick="loadPage('laporan')">
-                            <i class="fas fa-file-alt"></i>
-                            <span>Buat Laporan</span>
-                        </a>
+
                     </div>
                 </div>
             </div>
@@ -254,20 +275,20 @@ if (!$is_ajax) {
                     <div class="dashboard-user-progress-item">
                         <div class="dashboard-user-progress-label">
                             <span>Data Kependudukan</span>
-                            <span class="dashboard-user-progress-percent">85%</span>
+                            <span class="dashboard-user-progress-percent"><?php echo min(100, ($total_penduduk / 50) * 100); ?>%</span>
                         </div>
                         <div class="dashboard-user-progress-bar">
-                            <div class="dashboard-user-progress-fill" style="width: 85%"></div>
+                            <div class="dashboard-user-progress-fill" style="width: <?php echo min(100, ($total_penduduk / 50) * 100); ?>%"></div>
                         </div>
                     </div>
                     
                     <div class="dashboard-user-progress-item">
                         <div class="dashboard-user-progress-label">
                             <span>Data Ekonomi</span>
-                            <span class="dashboard-user-progress-percent">70%</span>
+                            <span class="dashboard-user-progress-percent"><?php echo min(100, ($total_sektor / 5) * 100); ?>%</span>
                         </div>
                         <div class="dashboard-user-progress-bar">
-                            <div class="dashboard-user-progress-fill" style="width: 70%"></div>
+                            <div class="dashboard-user-progress-fill" style="width: <?php echo min(100, ($total_sektor / 5) * 100); ?>%"></div>
                         </div>
                     </div>
                 </div>

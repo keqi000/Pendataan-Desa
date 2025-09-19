@@ -330,3 +330,9 @@ function navigateToPage(page) {
         pendataanDesa.navigateToPage(page);
     }
 }
+
+function loadPage(page) {
+    if (window.mainLayoutComponent) {
+        window.mainLayoutComponent.loadPage(page);
+    }
+}

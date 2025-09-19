@@ -1,5 +1,6 @@
 // Dashboard JavaScript
-class Dashboard {
+if (typeof window.Dashboard === 'undefined') {
+window.Dashboard = class {
     constructor() {
         this.charts = {};
         this.init();
@@ -144,6 +145,7 @@ class Dashboard {
             });
         });
     }
+};
 }
 
 // Global functions for dashboard
@@ -179,5 +181,27 @@ function viewDesa(desaId) {
 
 // Initialize dashboard when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    window.dashboardInstance = new Dashboard();
+    if (window.Dashboard && !window.dashboardInstance) {
+        window.dashboardInstance = new window.Dashboard();
+    }
 });
+
+// Re-initialize for AJAX navigation
+if (document.readyState !== 'loading') {
+    setTimeout(() => {
+        if (window.Dashboard && !window.dashboardInstance) {
+            window.dashboardInstance = new window.Dashboard();
+        }
+    }, 100);
+}
+
+// Global init function for AJAX calls
+window.initDashboard = function() {
+    if (window.Dashboard) {
+        if (window.dashboardInstance) {
+            window.dashboardInstance.init();
+        } else {
+            window.dashboardInstance = new window.Dashboard();
+        }
+    }
+};

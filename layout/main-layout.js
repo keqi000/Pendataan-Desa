@@ -123,16 +123,59 @@ class MainLayoutComponent {
                 // Reinitialize page-specific functionality
                 if (page === 'dashboard') {
                     setTimeout(() => {
-                        if (typeof window.reinitializeDashboard === 'function') {
-                            window.reinitializeDashboard();
+                        if (typeof window.initDashboard === 'function') {
+                            window.initDashboard();
                         }
-                    }, 100);
+                    }, 300);
                 } else if (page === 'detail-desa') {
                     setTimeout(() => {
                         if (typeof window.reinitializeDetailDesa === 'function') {
                             window.reinitializeDetailDesa();
                         }
                     }, 200);
+                } else if (page === 'data-umum') {
+                    setTimeout(() => {
+                        if (typeof window.initDataUmum === 'function') {
+                            window.initDataUmum();
+                        }
+                    }, 300);
+                } else if (page === 'kependudukan') {
+                    setTimeout(() => {
+                        if (typeof window.initKependudukan === 'function') {
+                            window.initKependudukan();
+                        }
+                    }, 300);
+                } else if (page === 'ekonomi') {
+                    setTimeout(() => {
+                        if (typeof window.initEkonomi === 'function') {
+                            window.initEkonomi();
+                        }
+                    }, 300);
+                } else if (page === 'pendidikan') {
+                    setTimeout(() => {
+                        if (typeof window.initPendidikan === 'function') {
+                            window.initPendidikan();
+                        }
+                    }, 300);
+                } else if (page === 'infrastruktur') {
+                    setTimeout(() => {
+                        if (typeof window.initInfrastruktur === 'function') {
+                            window.initInfrastruktur();
+                        }
+                    }, 300);
+                } else if (page === 'laporan') {
+                    setTimeout(() => {
+                        if (typeof window.initLaporan === 'function') {
+                            window.initLaporan();
+                        }
+                    }, 300);
+                } else if (page === 'peta') {
+                    setTimeout(() => {
+                        console.log('🗺️ [MAIN-LAYOUT] Initializing peta page');
+                        if (typeof window.initializePetaIfNeeded === 'function') {
+                            window.initializePetaIfNeeded();
+                        }
+                    }, 500);
                 }
             }, 200);
             

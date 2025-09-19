@@ -3,7 +3,7 @@ require_once 'config/config.php';
 session_start();
 
 // Redirect ke dashboard jika sudah login
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_role'])) {
     if ($_SESSION['user_role'] === 'admin_kecamatan') {
         header('Location: ' . BASE_URL . 'pages/admin/dashboard/dashboard.php');
     } else {
