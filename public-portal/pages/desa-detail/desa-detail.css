@@ -1,0 +1,294 @@
+/* Desa Detail CSS - Sistem Informasi Publik */
+/* File: public-portal/pages/desa-detail/desa-detail.css */
+
+.desa-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 40px 0;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-bottom: 15px;
+}
+
+.breadcrumb a { color: white; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb i { font-size: 0.7rem; }
+
+.desa-hero-content h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+.desa-hero-content p { opacity: 0.9; }
+
+/* Stats Grid */
+.desa-stats-section { padding: 30px 0; background: var(--light-color); }
+
+.desa-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.desa-stat-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
+}
+
+.desa-stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+.desa-stat-card i {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.desa-stat-value { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+.desa-stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+/* Main Content */
+.desa-content { padding: 30px 0 50px; }
+
+/* Fasilitas */
+.fasilitas-grid { display: flex; flex-direction: column; gap: 12px; }
+
+.fasilitas-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: var(--light-gray);
+    border-radius: var(--radius-md);
+}
+
+.fasilitas-icon {
+    width: 40px; height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.fasilitas-info { flex: 1; }
+.fasilitas-jenis { display: block; font-weight: 600; color: var(--primary-color); }
+.fasilitas-jumlah { font-size: 0.85rem; color: var(--text-muted); }
+
+/* UMKM */
+.umkm-list { display: flex; flex-direction: column; gap: 12px; }
+
+.umkm-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: var(--light-gray);
+    border-radius: var(--radius-md);
+}
+
+.umkm-icon {
+    width: 40px; height: 40px;
+    background: var(--info-color);
+    color: white;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.umkm-info { flex: 1; }
+.umkm-nama { display: block; font-weight: 600; color: var(--primary-color); }
+.umkm-jenis { font-size: 0.85rem; color: var(--text-muted); }
+.umkm-karyawan { font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; }
+
+/* Info List */
+.info-list { display: flex; flex-direction: column; gap: 10px; }
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.info-row:last-child { border-bottom: none; }
+.info-label { color: var(--text-muted); font-size: 0.9rem; }
+.info-value { font-weight: 600; color: var(--primary-color); }
+
+/* Infrastruktur Bar */
+.infra-bar { display: flex; flex-direction: column; gap: 12px; }
+
+.infra-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+}
+
+.infra-bar-item span:first-child { min-width: 45px; color: var(--text-muted); }
+.infra-bar-item span:last-child { min-width: 35px; text-align: right; font-weight: 600; }
+
+.bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.8s ease; }
+.bar-baik   { background: var(--success-color); }
+.bar-sedang { background: var(--warning-color); }
+.bar-rusak  { background: var(--danger-color); }
+
+/* Desa Nav List */
+.desa-nav-list { display: flex; flex-direction: column; gap: 4px; max-height: 300px; overflow-y: auto; }
+
+.desa-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    color: #555;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+}
+
+.desa-nav-item:hover { background: var(--light-gray); color: var(--primary-color); }
+.desa-nav-item i { color: var(--secondary-color); font-size: 0.8rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .desa-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .desa-hero-content h1 { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+    .desa-stats-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Add consistent breathing room between profile cards. */
+.desa-stats-section {
+    padding: 34px 0;
+}
+
+.desa-stats-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.desa-stat-card {
+    min-width: 0;
+    padding: 23px 16px;
+    border: 1px solid #e3eaf1;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(25, 52, 79, 0.06);
+}
+
+.desa-content {
+    padding: 34px 0 58px;
+}
+
+.desa-content > .container > .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
+    gap: 26px;
+    margin: 0;
+}
+
+.desa-content > .container > .row > .col-md-8,
+.desa-content > .container > .row > .col-md-4 {
+    min-width: 0;
+    max-width: none;
+    padding: 0;
+}
+
+.desa-content .card {
+    margin-bottom: 24px;
+    border-color: #e3eaf1;
+    border-radius: 17px;
+    box-shadow: 0 8px 26px rgba(25, 52, 79, 0.055);
+}
+
+.desa-content .card:last-child {
+    margin-bottom: 0;
+}
+
+.desa-content .card-header,
+.desa-content .card-body {
+    padding: 22px 24px;
+}
+
+.desa-content .card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #294b68;
+}
+
+.desa-content .card-title i {
+    color: var(--secondary-color);
+}
+
+@media (max-width: 992px) {
+    .desa-stats-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .desa-content > .container > .row {
+        grid-template-columns: minmax(0, 1.5fr) minmax(250px, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .desa-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .desa-content > .container > .row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+
+    .desa-content .card {
+        margin-bottom: 18px;
+    }
+
+    .desa-content .card-header,
+    .desa-content .card-body {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .desa-stats-section {
+        padding: 24px 0;
+    }
+
+    .desa-stats-grid {
+        gap: 11px;
+    }
+
+    .desa-stat-card {
+        padding: 17px 10px;
+    }
+
+    .desa-stat-value {
+        font-size: 1.25rem;
+    }
+
+    .desa-content {
+        padding: 24px 0 42px;
+    }
+}

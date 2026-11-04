@@ -1,0 +1,314 @@
+/* Header CSS untuk Sistem Informasi Publik */
+/* File: public-portal/layout/header/header.css */
+
+.public-header {
+    background: linear-gradient(135deg, #112D4E 0%, #3F72AF 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.public-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+}
+
+.header-text h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header-text p {
+    margin: 2px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+.header-text small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.header-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.info-item i {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.info-item span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .public-header {
+        padding: 15px 0;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .header-logo {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo-img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .header-text h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header-text p {
+        font-size: 1rem;
+    }
+    
+    .header-info {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .info-item {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-info {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .info-item {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+    
+    .header-text h1 {
+        font-size: 1.3rem;
+    }
+    
+    .header-text p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Refined public portal header */
+.public-header {
+    padding: 25px 0;
+    background:
+        radial-gradient(ellipse at 86% 12%, rgba(138, 177, 210, 0.2), transparent 34%),
+        linear-gradient(120deg, #142d47 0%, #1d4568 58%, #2c5a80 100%);
+    box-shadow: none;
+}
+
+.public-header::before {
+    opacity: 0.16;
+}
+
+.header-content {
+    gap: 28px;
+}
+
+.header-logo {
+    gap: 17px;
+}
+
+.header-logo::before {
+    content: "\f3c5";
+    display: grid;
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.11);
+    color: #e2edf7;
+    font-family: "Font Awesome 6 Free";
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.header-text h1 {
+    font-size: 1.65rem;
+    letter-spacing: -0.035em;
+    text-shadow: none;
+}
+
+.header-text p {
+    margin-top: 4px;
+    font-size: 1rem;
+    letter-spacing: 0.015em;
+}
+
+.header-text small {
+    display: block;
+    margin-top: 2px;
+    color: rgba(240, 248, 243, 0.7);
+    letter-spacing: 0.025em;
+}
+
+.header-info {
+    gap: 10px;
+}
+
+.info-item {
+    gap: 9px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+}
+
+.info-item:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+}
+
+.info-item i {
+    color: #c9dced;
+}
+
+.info-item span {
+    font-size: 0.83rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .public-header {
+        padding: 22px 0;
+    }
+
+    .header-content {
+        gap: 18px;
+    }
+
+    .header-logo {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .header-logo::before {
+        width: 50px;
+        height: 50px;
+        flex-basis: 50px;
+        border-radius: 15px;
+        font-size: 20px;
+    }
+
+    .header-text h1 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logo {
+        gap: 12px;
+    }
+
+    .header-logo::before {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+        font-size: 18px;
+    }
+
+    .header-text h1 {
+        font-size: 1.2rem;
+    }
+
+    .header-text p {
+        font-size: 0.92rem;
+    }
+
+    .header-text small {
+        font-size: 0.74rem;
+    }
+
+    .header-info {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .info-item {
+        width: auto;
+        max-width: none;
+        justify-content: center;
+        padding: 8px 10px;
+    }
+
+    .info-item span {
+        font-size: 0.74rem;
+    }
+}
