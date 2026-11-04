@@ -1,0 +1,295 @@
+/* Progress Bar dan Notification Styles */
+.calculating-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-bottom: 20px;
+    border-left: 4px solid #3F72AF;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    animation: slideDown 0.3s ease-out;
+}
+
+.calculating-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+}
+
+.calculating-text {
+    font-weight: 500;
+    color: #3F72AF;
+    flex: 1;
+}
+
+.calculating-progress {
+    width: 200px;
+    height: 6px;
+    background: rgba(63, 114, 175, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.calculating-progress .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #3F72AF, #112D4E);
+    animation: progressPulse 2s ease-in-out infinite;
+}
+
+.last-update-badge {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    margin-bottom: 15px;
+    border-left: 4px solid #28a745;
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    animation: slideDown 0.3s ease-out;
+}
+
+.last-update-badge i {
+    color: #28a745;
+    margin-right: 8px;
+}
+
+.last-update-badge small {
+    color: #6c757d;
+    margin-left: 10px;
+    font-size: 0.8em;
+}
+
+/* Toast Notifications */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 10000;
+    min-width: 280px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-content i {
+    font-size: 16px;
+}
+
+.toast-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.toast-info {
+    background: linear-gradient(135deg, #17a2b8, #3F72AF);
+}
+
+.toast-warning {
+    background: linear-gradient(135deg, #ffc107, #fd7e14);
+}
+
+.toast-error {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+/* Background Update Notification */
+.background-refresh-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
+
+.background-refresh-notification.show {
+    transform: translateX(0);
+}
+
+.refresh-notification-content {
+    padding: 16px;
+}
+
+.refresh-notification-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #3F72AF;
+}
+
+.refresh-notification-header i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.refresh-close-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.refresh-close-btn:hover {
+    color: #333;
+    background: #f0f0f0;
+}
+
+.refresh-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.refresh-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3F72AF, #112D4E);
+    width: 0%;
+    animation: refreshProgressAnimation 15s ease-in-out infinite;
+}
+
+.refresh-notification-body p {
+    margin: 0;
+    font-size: 13px;
+    color: #666;
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes progressPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes refreshProgressAnimation {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
+}
+
+/* Cache Status Indicators */
+.cache-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cache-status.fresh {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.cache-status.stale {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.cache-status.calculating {
+    background: #cce5ff;
+    color: #004085;
+    border: 1px solid #b3d7ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .background-refresh-notification,
+    .toast-notification {
+        right: 10px;
+        left: 10px;
+        width: auto;
+        min-width: auto;
+    }
+    
+    .calculating-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .calculating-progress {
+        width: 100%;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .calculating-banner {
+        background: linear-gradient(135deg, #2d3748, #4a5568);
+        color: #e2e8f0;
+    }
+    
+    .last-update-badge {
+        background: linear-gradient(135deg, #2d5a3d, #38a169);
+        color: #e2e8f0;
+    }
+    
+    .background-refresh-notification {
+        background: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .refresh-notification-header {
+        color: #63b3ed;
+    }
+    
+    .refresh-close-btn {
+        color: #a0aec0;
+    }
+    
+    .refresh-close-btn:hover {
+        color: #e2e8f0;
+        background: #4a5568;
+    }
+}

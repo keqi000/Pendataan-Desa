@@ -1,12 +1,14 @@
 <?php
 require_once __DIR__ . '/../../config/config.php';
+require_once __DIR__ . '/../../config/session.php';
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../database/queries.php';
 
-session_start();
+// Initialize session dengan session manager
+initSession();
 
-// Redirect jika sudah login
-if (isset($_SESSION['user_id'])) {
+// Redirect jika sudah login dan session valid
+if (validateSession() && isset($_SESSION['user_id'])) {
     if ($_SESSION['user_role'] === 'admin_kecamatan') {
         header('Location: ' . BASE_URL . 'pages/admin/dashboard/dashboard.php');
     } else {
@@ -28,11 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $queries->getUserByUsername($username);
         
         if ($user && password_verify($password, $user['password'])) {
+            // Destroy any existing session first
+            destroySession();
+            
+            // Start fresh session
+            initSession();
+            
             $_SESSION['user_id'] = $user['id_user'];
             $_SESSION['user_name'] = $user['nama_lengkap'];
             $_SESSION['user_role'] = $user['role'];
             $_SESSION['user_desa'] = $user['id_desa'];
             $_SESSION['desa_name'] = $user['nama_desa'];
+            $_SESSION['login_time'] = time();
             
             $queries->updateLastLogin($user['id_user']);
             
@@ -134,7 +143,13 @@ $page_title = 'Login - Sistem Pendataan Desa';
                     Masuk
                 </button>
             </form>
-            
+
+            <div style="text-align:center; margin-top:16px;">
+                <a href="<?php echo PUBLIC_PORTAL_URL; ?>" class="btn btn-secondary" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none;">
+                    <i class="fas fa-globe"></i>
+                    Lihat Portal Publik
+                </a>
+            </div>
 
         </div>
         

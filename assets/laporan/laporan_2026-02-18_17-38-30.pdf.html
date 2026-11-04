@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Analisis Dasar</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .kop { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+        .kop h1 { margin: 0; font-size: 18px; font-weight: bold; }
+        .kop h2 { margin: 5px 0; font-size: 16px; }
+        .kop p { margin: 2px 0; font-size: 12px; }
+        .title { text-align: center; margin: 30px 0; }
+        .title h3 { margin: 0; font-size: 16px; font-weight: bold; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        th { background-color: #f0f0f0; font-weight: bold; }
+        .signature { margin-top: 50px; float: right; text-align: center; }
+        .signature p { margin: 5px 0; }
+        .page-break { page-break-before: always; }
+        .print-controls { position: fixed; top: 10px; right: 10px; z-index: 1000; background: white; padding: 10px; border: 1px solid #ccc; }
+        .print-controls button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+        @media print { .print-controls { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="print-controls">
+        <button onclick="window.print()">Print/Save as PDF</button>
+        <button onclick="downloadHTML()">Download HTML</button>
+    </div>
+    <script>
+        function downloadHTML() {
+            const element = document.documentElement;
+            const html = element.outerHTML;
+            const blob = new Blob([html], {type: "text/html"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "laporan.html";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        setTimeout(() => {
+            if (confirm("Apakah Anda ingin mencetak laporan sekarang?")) {
+                window.print();
+            }
+        }, 1000);
+    </script>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN DATA UMUM INFRASTRUKTUR</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Data Umum Infrastruktur</h4><table><tr><th>Kategori</th><th>Jumlah</th></tr><tr><td>Total Jalan</td><td>11 unit</td></tr><tr><td>Panjang Jalan</td><td>19,150.0 km</td></tr><tr><td>Total Jembatan</td><td>3 unit</td></tr><tr><td>Kondisi Baik</td><td>71.4%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 18 February 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN KONDISI JALAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Kondisi Jalan</h4><table><tr><th>Kondisi</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Baik</td><td>7</td><td>63.6%</td></tr><tr><td>Sedang</td><td>4</td><td>36.4%</td></tr><tr><td>Rusak</td><td>0</td><td>0%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 18 February 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN KONDISI JEMBATAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Kondisi Jembatan</h4><table><tr><th>Kondisi</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Baik</td><td>3</td><td>100%</td></tr><tr><td>Sedang</td><td>0</td><td>0%</td></tr><tr><td>Rusak</td><td>0</td><td>0%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 18 February 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN ANALISIS SPASIAL & GEOGRAFIS</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Analisis Spasial & Geografis</h4><table><tr><th>Indikator</th><th>Nilai</th></tr><tr><td>Rata-rata Kepadatan Penduduk</td><td>59.9 jiwa/km²</td></tr><tr><td>Total Fasilitas Umum</td><td>22 unit</td></tr><tr><td>Rata-rata Fasilitas per Desa</td><td>1.4 unit</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 18 February 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div>
+</body>
+</html>

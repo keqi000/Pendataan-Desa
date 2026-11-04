@@ -144,6 +144,29 @@
     transition: border-color 0.3s ease;
 }
 
+.password-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-group input {
+    padding-right: 45px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: #3F72AF;
+}
+
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
@@ -401,4 +424,295 @@
         width: 95%;
         margin: 10px;
     }
+}
+
+/* Modal Pekerjaan - Menggunakan style kependudukan */
+.kependudukan-modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.kependudukan-modal-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    max-width: 500px;
+    width: 90%;
+    margin: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.kependudukan-modal-header {
+    padding: 20px 24px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kependudukan-modal-header h3 {
+    margin: 0;
+    color: #112D4E;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.kependudukan-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.kependudukan-modal-close:hover {
+    background: #e9ecef;
+    color: #112D4E;
+}
+
+.kependudukan-modal-body {
+    padding: 24px;
+}
+
+.kependudukan-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 768px) {
+    .kependudukan-form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.kependudukan-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.kependudukan-form-group label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #112D4E;
+    font-size: 14px;
+}
+
+.kependudukan-form-group input,
+.kependudukan-form-group select {
+    padding: 10px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    background: white;
+}
+
+.kependudukan-form-group input:focus,
+.kependudukan-form-group select:focus {
+    outline: none;
+    border-color: #3F72AF;
+    box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.1);
+}
+
+.kependudukan-modal-footer {
+    padding: 20px 24px;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.kependudukan-btn-primary {
+    background: #3F72AF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.kependudukan-btn-primary:hover {
+    background: #2c5282;
+    transform: translateY(-1px);
+}
+
+.kependudukan-btn-secondary {
+    background: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.kependudukan-btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+/* Alert Styles */
+.kependudukan-alert {
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.kependudukan-alert-success {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+.kependudukan-alert-danger {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.kependudukan-alert-warning {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+}
+
+.kependudukan-alert-info {
+    background-color: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    color: #0c5460;
+}
+
+/* Pekerjaan Sub Tabs */
+.pekerjaan-subtab {
+    display: none;
+}
+
+.pekerjaan-subtab.active {
+    display: block;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #212529;
+    border: none;
+}
+
+.btn-warning:hover {
+    background: #e0a800;
+    transform: translateY(-1px);
+}
+
+.btn-info {
+    background: #17a2b8;
+    color: white;
+    border: none;
+}
+
+.btn-info:hover {
+    background: #138496;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+    border: none;
+}
+
+.btn-success:hover {
+    background: #218838;
+    transform: translateY(-1px);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Statistik Cards */
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h4 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #112D4E;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
 }

@@ -1,0 +1,296 @@
+.pengaturan-container {
+    padding: 24px;
+    background: #F9F7F7;
+    min-height: 100vh;
+}
+
+.pengaturan-header {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(17, 45, 78, 0.1);
+    margin-bottom: 24px;
+}
+
+.pengaturan-header h2 {
+    color: #112D4E;
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.pengaturan-header p {
+    color: #666;
+    margin: 0;
+    font-size: 16px;
+}
+
+.pengaturan-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: white;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(17, 45, 78, 0.1);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #666;
+}
+
+.tab-btn:hover {
+    background: #f8f9fa;
+    color: #112D4E;
+}
+
+.tab-btn.active {
+    background: #3F72AF;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(17, 45, 78, 0.1);
+    border: none;
+    margin-bottom: 24px;
+}
+
+.card-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-header h3 {
+    margin: 0;
+    color: #112D4E;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 24px;
+}
+
+.profile-info {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.profile-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-item label {
+    font-weight: 600;
+    color: #112D4E;
+}
+
+.change-password-section {
+    border-top: 2px solid #eee;
+    padding-top: 24px;
+}
+
+.change-password-section h4 {
+    color: #112D4E;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #112D4E;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    padding-right: 40px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+    color: #3F72AF;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3F72AF;
+    box-shadow: 0 0 0 3px rgba(63, 114, 175, 0.1);
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: #3F72AF;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2c5282;
+    transform: translateY(-1px);
+}
+
+.badge {
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 12px;
+}
+
+.badge-primary {
+    background: #3F72AF;
+    color: white;
+}
+
+.faq-list {
+    display: grid;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 16px;
+    background: #f8f9fa;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: #112D4E;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #e9ecef;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active i {
+    transform: rotate(90deg);
+}
+
+.faq-answer {
+    padding: 16px;
+    background: white;
+    display: none;
+    color: #666;
+    line-height: 1.6;
+}
+
+.faq-answer.show {
+    display: block;
+}
+
+.guide-sections {
+    display: grid;
+    gap: 24px;
+}
+
+.guide-section h4 {
+    color: #112D4E;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.guide-section ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.guide-section li {
+    margin-bottom: 8px;
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .pengaturan-container {
+        padding: 16px;
+    }
+    
+    .pengaturan-tabs {
+        flex-direction: column;
+    }
+    
+    .profile-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

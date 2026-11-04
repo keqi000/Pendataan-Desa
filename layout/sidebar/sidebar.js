@@ -1,4 +1,4 @@
-// Sidebar Component JavaScript
+// Sidebar Component JavaScript - Traditional Navigation
 class SidebarComponent {
     constructor() {
         if (document.querySelector('.sidebar-main-sidebar')) {
@@ -8,28 +8,7 @@ class SidebarComponent {
     }
     
     init() {
-        this.setupNavigation();
         this.setupMobileToggle();
-    }
-    
-    setupNavigation() {
-        const navLinks = document.querySelectorAll('.sidebar-nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all links
-                navLinks.forEach(l => l.classList.remove('active'));
-                
-                // Add active class to clicked link
-                link.classList.add('active');
-                
-                // Close sidebar on mobile after navigation
-                if (window.innerWidth <= 768) {
-                    this.hide();
-                }
-            });
-        });
     }
     
     setupMobileToggle() {
@@ -86,13 +65,6 @@ class SidebarComponent {
         } else {
             this.sidebar.classList.add('collapsed');
         }
-    }
-}
-
-// Global functions for sidebar
-function loadPage(page) {
-    if (window.mainLayoutComponent) {
-        window.mainLayoutComponent.loadPage(page);
     }
 }
 

@@ -1,0 +1,729 @@
+.detail-analisis-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detail-analisis-header {
+    margin-bottom: 32px;
+}
+
+.detail-analisis-breadcrumb {
+    margin-bottom: 16px;
+}
+
+.detail-analisis-breadcrumb a {
+    color: #3F72AF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.detail-analisis-title h2 {
+    color: #112D4E;
+    margin: 16px 0 8px 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.detail-analisis-title p {
+    color: #666;
+    margin: 0;
+    font-size: 16px;
+}
+
+.detail-analisis-actions {
+    margin-top: 16px;
+}
+
+.detail-analisis-tabs {
+    margin-bottom: 32px;
+}
+
+.detail-analisis-tab-nav {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #DBE2EF;
+    background: white;
+    border-radius: 8px 8px 0 0;
+    padding: 0 16px;
+}
+
+.detail-analisis-tab-btn {
+    padding: 16px 24px;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    border-radius: 8px 8px 0 0;
+}
+
+.detail-analisis-tab-btn:hover {
+    color: #3F72AF;
+    background-color: #f8f9fa;
+}
+
+.detail-analisis-tab-btn.active {
+    color: #3F72AF;
+    border-bottom-color: #3F72AF;
+    background-color: #f8f9fa;
+}
+
+.detail-analisis-content {
+    background: var(--lightest-color);
+    border-radius: 0 0 12px 12px;
+}
+
+.tab-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    background: white;
+    border-radius: 12px;
+    margin: 24px 0;
+}
+
+.loading-spinner {
+    text-align: center;
+    color: #3F72AF;
+}
+
+.loading-spinner i {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.loading-spinner p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    margin: 24px 0;
+    color: #dc3545;
+}
+
+.error-message i {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.error-message p {
+    font-size: 16px;
+    margin: 16px 0;
+}
+
+.retry-btn {
+    background: #3F72AF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.retry-btn:hover {
+    background: #2c5282;
+}
+
+.tab-placeholder {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    margin: 24px 0;
+    color: #666;
+    font-style: italic;
+}
+
+.detail-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.section-header {
+    background: linear-gradient(135deg, #112D4E 0%, #3F72AF 100%);
+    color: white;
+    padding: 20px 24px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.section-header i {
+    margin-right: 8px;
+}
+
+.section-content {
+    padding: 24px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.data-table th {
+    background: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #112D4E;
+    border-bottom: 2px solid #DBE2EF;
+}
+
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+}
+
+.data-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-miskin {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-mampu {
+    background: #d4edda;
+    color: #155724;
+}
+
+.kategori-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.kategori-kecil {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.kategori-sedang {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.sektor-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sektor-pertanian {
+    background: #d4edda;
+    color: #155724;
+}
+
+.sektor-non-pertanian {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.faktor-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-tidak-tetap {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.kategori-rendah {
+    background: #d4edda;
+    color: #155724;
+}
+
+.kategori-sedang {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.kategori-tinggi {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.kategori-sangat-tinggi {
+    background: #dc3545;
+    color: white;
+}
+
+.sektor-pertanian {
+    background: #d4edda;
+    color: #155724;
+}
+
+.sektor-non-pertanian {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-tetap {
+    background: #d4edda;
+    color: #155724;
+}
+
+.kategori-kecil {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.analisis-breakdown {
+    margin-top: 24px;
+}
+
+.analisis-breakdown h5 {
+    color: #112D4E;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.breakdown-item span:first-child {
+    font-weight: 500;
+    color: #112D4E;
+}
+
+.breakdown-item span:last-child {
+    color: #666;
+}
+
+.breakdown-sub-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0 8px 16px;
+    font-size: 13px;
+    color: #888;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.breakdown-sub-item span:first-child {
+    font-weight: 400;
+    color: #666;
+}
+
+.breakdown-sub-item span:last-child {
+    color: #888;
+    font-size: 12px;
+}
+
+.data-table-section {
+    margin-top: 32px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.table-header h4 {
+    margin: 0;
+    color: #112D4E;
+    font-size: 18px;
+}
+
+.search-input {
+    padding: 8px 16px;
+    border: 2px solid #DBE2EF;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3F72AF;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.pagination-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.items-per-page {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+}
+
+.pagination-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.pagination-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pagination-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #3F72AF;
+    color: white;
+    border-color: #3F72AF;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-info {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.analisis-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stat-item {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    border-left: 4px solid #3F72AF;
+    text-align: center;
+}
+
+.stat-item h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 600;
+    color: #112D4E;
+    text-align: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .detail-analisis-container {
+        padding: 16px;
+    }
+    
+    .analisis-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .detail-analisis-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+    
+    .detail-analisis-tab-nav {
+        flex-wrap: wrap;
+        padding: 0 8px;
+    }
+    
+    .detail-analisis-tab-btn {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+    
+    .card-body {
+        padding: 16px;
+    }
+    
+    .data-table-container {
+        font-size: 12px;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 8px;
+    }
+}
+
+/* Enhanced Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #DBE2EF;
+}
+
+.pagination-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.items-per-page {
+    padding: 6px 12px;
+    border: 1px solid #DBE2EF;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+    color: #112D4E;
+}
+
+.pagination-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.pagination-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pagination-btn {
+    padding: 8px 12px;
+    border: 1px solid #DBE2EF;
+    background: white;
+    color: #112D4E;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #3F72AF;
+    color: white;
+    border-color: #3F72AF;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f5f5f5;
+}
+
+.page-info {
+    font-size: 14px;
+    color: #112D4E;
+    font-weight: 500;
+}
+
+/* Loading and Error States */
+.loading-row td,
+.error-row td,
+.no-results-row td {
+    text-align: center;
+    padding: 32px;
+    color: #666;
+}
+
+.loading-row .fa-spinner {
+    color: #3F72AF;
+}
+
+.error-row {
+    color: #e74c3c;
+}
+
+.retry-btn {
+    padding: 6px 12px;
+    background: #3F72AF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.retry-btn:hover {
+    background: #112D4E;
+}
+
+/* Enhanced Status Badges */
+.status-badge,
+.kategori-badge,
+.sektor-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-miskin {
+    background: #fee;
+    color: #c53030;
+}
+
+.status-tidak-tetap {
+    background: #fef5e7;
+    color: #d69e2e;
+}
+
+.status-tetap {
+    background: #f0fff4;
+    color: #38a169;
+}
+
+.kategori-kecil {
+    background: #fef5e7;
+    color: #d69e2e;
+}
+
+.kategori-sedang {
+    background: #e6fffa;
+    color: #319795;
+}
+
+.kategori-tinggi {
+    background: #f0fff4;
+    color: #38a169;
+}
+
+.kategori-rendah {
+    background: #fee;
+    color: #c53030;
+}
+
+.sektor-pertanian {
+    background: #f0fff4;
+    color: #38a169;
+}
+
+.sektor-non-pertanian {
+    background: #ebf8ff;
+    color: #3182ce;
+}
+
+/* Responsive Pagination */
+@media (max-width: 768px) {
+    .pagination-controls {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    
+    .pagination-info {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .pagination-buttons {
+        justify-content: center;
+    }
+    
+    .pagination-text {
+        font-size: 12px;
+    }
+}

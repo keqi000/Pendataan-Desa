@@ -77,13 +77,53 @@ class Queries {
         return $stats;
     }
     
-    // EKONOMI QUERIES
+    // EKONOMI QUERIES - Updated to use individual tables instead of data_ekonomi
     public function getDataEkonomi($id_desa) {
-        $query = "SELECT * FROM data_ekonomi WHERE id_desa = :id_desa ORDER BY jenis_data, nama_usaha_atau_pekerjaan";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id_desa', $id_desa);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $ekonomi_data = [];
+        
+        // Get UMKM data
+        $umkm = $this->getUMKM($id_desa);
+        foreach ($umkm as $u) {
+            $ekonomi_data[] = [
+                'jenis_data' => 'umkm',
+                'nama_usaha_atau_pekerjaan' => $u['nama_usaha'],
+                'deskripsi' => $u['deskripsi'] ?? null,
+                'jumlah_pelaku' => $u['jumlah_karyawan'] ?? 0,
+                'hasil_produksi' => $u['hasil_produksi'] ?? null,
+                'nilai_ekonomi' => $u['nilai_ekonomi'] ?? $u['omzet_perbulan'],
+                'lokasi' => $u['lokasi'] ?? $u['alamat_usaha']
+            ];
+        }
+        
+        // Get Pasar data
+        $pasar = $this->getPasarByDesa($id_desa);
+        foreach ($pasar as $p) {
+            $ekonomi_data[] = [
+                'jenis_data' => 'pasar',
+                'nama_usaha_atau_pekerjaan' => $p['nama_pasar'],
+                'deskripsi' => $p['deskripsi'] ?? null,
+                'jumlah_pelaku' => $p['jumlah_pedagang'],
+                'hasil_produksi' => null,
+                'nilai_ekonomi' => $p['nilai_ekonomi'] ?? null,
+                'lokasi' => $p['alamat_pasar']
+            ];
+        }
+        
+        // Get Pertanian data
+        $pertanian = $this->getPertanianByDesa($id_desa);
+        foreach ($pertanian as $pt) {
+            $ekonomi_data[] = [
+                'jenis_data' => 'pertanian',
+                'nama_usaha_atau_pekerjaan' => $pt['jenis_komoditas'],
+                'deskripsi' => $pt['deskripsi'] ?? null,
+                'jumlah_pelaku' => 1,
+                'hasil_produksi' => $pt['produksi_per_musim'],
+                'nilai_ekonomi' => $pt['nilai_ekonomi'] ?? $pt['pendapatan_per_musim'],
+                'lokasi' => $pt['lokasi'] ?? null
+            ];
+        }
+        
+        return $ekonomi_data;
     }
     
     public function getUMKM($id_desa) {
@@ -100,6 +140,18 @@ class Queries {
     
     public function getPasarByDesa($id_desa) {
         $query = "SELECT * FROM pasar WHERE id_desa = :id_desa ORDER BY nama_pasar";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id_desa', $id_desa);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function getPertanianByDesa($id_desa) {
+        $query = "SELECT p.*, pd.nama_lengkap as nama_petani 
+                  FROM pertanian p 
+                  LEFT JOIN penduduk pd ON p.nik_petani = pd.nik 
+                  WHERE p.id_desa = :id_desa 
+                  ORDER BY p.jenis_komoditas";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':id_desa', $id_desa);
         $stmt->execute();
@@ -270,18 +322,35 @@ class Queries {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    // QUERIES UNTUK PELAKU EKONOMI
+    // QUERIES UNTUK PELAKU EKONOMI - Updated to use individual tables
     public function getPelakuEkonomi($id_desa) {
-        $query = "SELECT pe.*, p.nama_lengkap, de.nama_usaha_atau_pekerjaan, de.jenis_data
-                  FROM pelaku_ekonomi pe
-                  JOIN penduduk p ON pe.nik = p.nik
-                  JOIN data_ekonomi de ON pe.id_ekonomi = de.id_ekonomi
-                  WHERE de.id_desa = :id_desa AND pe.status_aktif = 'aktif'
-                  ORDER BY de.jenis_data, pe.peran";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id_desa', $id_desa);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $pelaku_data = [];
+        
+        // Get UMKM owners and employees
+        $umkm = $this->getUMKM($id_desa);
+        foreach ($umkm as $u) {
+            $pelaku_data[] = [
+                'nik' => $u['nik_pemilik'],
+                'nama_lengkap' => $u['nama_pemilik'],
+                'nama_usaha_atau_pekerjaan' => $u['nama_usaha'],
+                'jenis_data' => 'umkm',
+                'peran' => 'pemilik'
+            ];
+        }
+        
+        // Get farmers
+        $pertanian = $this->getPertanianByDesa($id_desa);
+        foreach ($pertanian as $p) {
+            $pelaku_data[] = [
+                'nik' => $p['nik_petani'],
+                'nama_lengkap' => $p['nama_petani'],
+                'nama_usaha_atau_pekerjaan' => $p['jenis_komoditas'],
+                'jenis_data' => 'pertanian',
+                'peran' => 'petani'
+            ];
+        }
+        
+        return $pelaku_data;
     }
     
     public function getTotalPelakuEkonomiByDesa($id_desa) {
@@ -296,19 +365,7 @@ class Queries {
     }
     
     public function getDataEkonomiWithPelaku($id_desa) {
-        $query = "SELECT de.*, 
-                         COUNT(DISTINCT pe.nik) as jumlah_pelaku_aktual,
-                         GROUP_CONCAT(DISTINCT p.nama_lengkap SEPARATOR ', ') as nama_pelaku
-                  FROM data_ekonomi de
-                  LEFT JOIN pelaku_ekonomi pe ON de.id_ekonomi = pe.id_ekonomi AND pe.status_aktif = 'aktif'
-                  LEFT JOIN penduduk p ON pe.nik = p.nik
-                  WHERE de.id_desa = :id_desa
-                  GROUP BY de.id_ekonomi
-                  ORDER BY de.jenis_data, de.nama_usaha_atau_pekerjaan";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id_desa', $id_desa);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->getDataEkonomi($id_desa);
     }
     
     public function getKeluargaByDesa($id_desa) {

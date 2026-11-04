@@ -17,10 +17,10 @@ class Database {
             $this->password = "";
         } else {
             // Konfigurasi Hosting
-            $this->host = "localhost"; // Sesuaikan dengan hosting
-            $this->db_name = "pendataan_desa";
-            $this->username = ""; // Username hosting
-            $this->password = ""; // Password hosting
+            $this->host = "localhost";
+            $this->db_name = "sipendes_tibawa";
+            $this->username = "sipendes_tibawa";
+            $this->password = "sipendes_tibawa";
         }
     }
     

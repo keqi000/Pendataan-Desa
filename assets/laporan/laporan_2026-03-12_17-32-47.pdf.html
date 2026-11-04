@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Analisis Dasar</title>
+    <!-- Data diambil dari cache analisis (cepat) -->
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .kop { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+        .kop h1 { margin: 0; font-size: 18px; font-weight: bold; }
+        .kop h2 { margin: 5px 0; font-size: 16px; }
+        .kop p { margin: 2px 0; font-size: 12px; }
+        .title { text-align: center; margin: 30px 0; }
+        .title h3 { margin: 0; font-size: 16px; font-weight: bold; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        th { background-color: #f0f0f0; font-weight: bold; }
+        .signature { margin-top: 50px; float: right; text-align: center; }
+        .signature p { margin: 5px 0; }
+        .page-break { page-break-before: always; }
+        .print-controls { position: fixed; top: 10px; right: 10px; z-index: 1000; background: white; padding: 10px; border: 1px solid #ccc; }
+        .print-controls button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+        .cache-info { position: fixed; top: 10px; left: 10px; z-index: 1000; background: #e8f5e8; padding: 8px 12px; border: 1px solid #4caf50; border-radius: 4px; font-size: 12px; }
+        @media print { .print-controls, .cache-info { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="cache-info">
+        ✓ Data dari cache analisis (update: 12/03/2026 00:24)
+    </div>
+    <div class="print-controls">
+        <button onclick="window.print()">Print/Save as PDF</button>
+        <button onclick="downloadHTML()">Download HTML</button>
+    </div>
+    <script>
+        function downloadHTML() {
+            const element = document.documentElement;
+            const html = element.outerHTML;
+            const blob = new Blob([html], {type: "text/html"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "laporan.html";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        setTimeout(() => {
+            if (confirm("Apakah Anda ingin mencetak laporan sekarang?")) {
+                window.print();
+            }
+        }, 1000);
+    </script>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN DATA UMUM PENDUDUK</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Data Umum Penduduk</h4><table><tr><th>Kategori</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Total Penduduk</td><td>43,336 jiwa</td><td>100%</td></tr><tr><td>Laki-laki</td><td>21,575</td><td>49.8%</td></tr><tr><td>Perempuan</td><td>21,761</td><td>50.2%</td></tr><tr><td>Total KK</td><td>16,562 KK</td><td>-</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN KELOMPOK USIA</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Kelompok Usia</h4><table><tr><th>Kelompok Usia</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Balita (0-5 tahun)</td><td>4,930</td><td>11.4%</td></tr><tr><td>Anak (6-12 tahun)</td><td>5,736</td><td>13.2%</td></tr><tr><td>Remaja (13-17 tahun)</td><td>2,591</td><td>6%</td></tr><tr><td>Dewasa (18-64 tahun)</td><td>27,607</td><td>63.7%</td></tr><tr><td>Lansia (65+ tahun)</td><td>2,472</td><td>5.7%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN DATA AGAMA</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Data Agama</h4><table><tr><th>Agama</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Islam</td><td>39,005</td><td>90%</td></tr><tr><td>Kristen</td><td>4,331</td><td>10%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN TINGKAT PENDIDIKAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Tingkat Pendidikan</h4><table><tr><th>Tingkat Pendidikan</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>D3</td><td>4,168</td><td>9.6%</td></tr><tr><td>SD</td><td>12,150</td><td>28%</td></tr><tr><td>SMA</td><td>8,150</td><td>18.8%</td></tr><tr><td>SMP</td><td>10,362</td><td>23.9%</td></tr><tr><td>S1</td><td>3,836</td><td>8.9%</td></tr><tr><td>Tidak Sekolah</td><td>3,772</td><td>8.7%</td></tr><tr><td>S2</td><td>769</td><td>1.8%</td></tr><tr><td>S3</td><td>129</td><td>0.3%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN STATUS PERNIKAHAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Status Pernikahan</h4><table><tr><th>Status Pernikahan</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Menikah</td><td>30,243</td><td>69.8%</td></tr><tr><td>Belum Menikah</td><td>12,268</td><td>28.3%</td></tr><tr><td>Cerai Mati</td><td>412</td><td>1%</td></tr><tr><td>Cerai Hidup</td><td>413</td><td>1%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN DATA UMUM EKONOMI</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Data Umum Ekonomi</h4><table><tr><th>Kategori</th><th>Jumlah</th></tr><tr><td>Total Mata Pencaharian</td><td>17 jenis</td></tr><tr><td>UMKM</td><td>105 unit</td></tr><tr><td>Pertanian</td><td>4,529 unit</td></tr><tr><td>Pasar</td><td>2 unit</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN MATA PENCAHARIAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Mata Pencaharian</h4><table><tr><th>Jenis Pekerjaan</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Admin</td><td>95</td><td>0.4%</td></tr><tr><td>Buruh</td><td>3,357</td><td>12.7%</td></tr><tr><td>Desainer</td><td>116</td><td>0.4%</td></tr><tr><td>Dokter</td><td>734</td><td>2.8%</td></tr><tr><td>Guru</td><td>730</td><td>2.8%</td></tr><tr><td>Karyawan</td><td>716</td><td>2.7%</td></tr><tr><td>Kasir</td><td>106</td><td>0.4%</td></tr><tr><td>Pegawai Negeri Sipil</td><td>708</td><td>2.7%</td></tr><tr><td>Perawat</td><td>106</td><td>0.4%</td></tr><tr><td>Petani</td><td>4,529</td><td>17.1%</td></tr><tr><td>Peternak</td><td>3,776</td><td>14.3%</td></tr><tr><td>Polisi</td><td>115</td><td>0.4%</td></tr><tr><td>Satpam</td><td>3,511</td><td>13.3%</td></tr><tr><td>Supir</td><td>3,564</td><td>13.5%</td></tr><tr><td>Swasta</td><td>4,067</td><td>15.4%</td></tr><tr><td>Teknisi</td><td>127</td><td>0.5%</td></tr><tr><td>Tentara</td><td>114</td><td>0.4%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN UMKM BERDASARKAN JENIS USAHA</h3>
+            <p>Tahun 2026</p>
+        </div><h4>UMKM Berdasarkan Jenis Usaha</h4><table><tr><th>Jenis Usaha</th><th>Jumlah</th></tr><tr><td>Warung Sembako</td><td>33 unit</td></tr><tr><td>Kuliner</td><td>29 unit</td></tr><tr><td>Servis Kendaraan</td><td>18 unit</td></tr><tr><td>Kreatif</td><td>15 unit</td></tr><tr><td>Jasa</td><td>5 unit</td></tr><tr><td>Fashion</td><td>5 unit</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN WARGA MISKIN & BANTUAN SOSIAL</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Warga Miskin & Bantuan Sosial</h4><table><tr><th>Kategori</th><th>Jumlah</th></tr><tr><td>Total Warga Miskin</td><td>0 orang</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN DATA UMUM PENDIDIKAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Data Umum Pendidikan</h4><table><tr><th>Kategori</th><th>Jumlah</th></tr><tr><td>Total Fasilitas</td><td>22 unit</td></tr><tr><td>Total Kapasitas</td><td>4,981 siswa</td></tr><tr><td>Total Guru</td><td>362 orang</td></tr><tr><td>Rasio Guru:Siswa</td><td>1:14</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN JENIS FASILITAS PENDIDIKAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Jenis Fasilitas</h4><table><tr><th>Jenis Fasilitas</th><th>Jumlah</th></tr><tr><td>SD</td><td>13 unit</td></tr><tr><td>SMP</td><td>8 unit</td></tr><tr><td>SMA</td><td>1 unit</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN KAPASITAS PER JENJANG</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Kapasitas Per Jenjang</h4><table><tr><th>Jenjang</th><th>Kapasitas</th></tr><tr><td>SD</td><td>390 siswa</td></tr><tr><td>SMP</td><td>240 siswa</td></tr><tr><td>SMA</td><td>30 siswa</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN DATA UMUM INFRASTRUKTUR</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Data Umum Infrastruktur</h4><table><tr><th>Kategori</th><th>Jumlah</th></tr><tr><td>Total Jalan</td><td>11 unit</td></tr><tr><td>Panjang Jalan</td><td>19,150.0 km</td></tr><tr><td>Total Jembatan</td><td>3 unit</td></tr><tr><td>Kondisi Baik</td><td>71.4%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN KONDISI JALAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Kondisi Jalan</h4><table><tr><th>Kondisi</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Baik</td><td>7</td><td>63.6%</td></tr><tr><td>Sedang</td><td>4</td><td>36.4%</td></tr><tr><td>Rusak</td><td>0</td><td>0%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN KONDISI JEMBATAN</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Kondisi Jembatan</h4><table><tr><th>Kondisi</th><th>Jumlah</th><th>Persentase</th></tr><tr><td>Baik</td><td>3</td><td>100%</td></tr><tr><td>Sedang</td><td>0</td><td>0%</td></tr><tr><td>Rusak</td><td>0</td><td>0%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN ANALISIS SPASIAL & GEOGRAFIS</h3>
+            <p>Tahun 2026</p>
+        </div><h4>Analisis Spasial & Geografis</h4><table><tr><th>Indikator</th><th>Nilai</th></tr><tr><td>Rata-rata Kepadatan Penduduk</td><td>2708.5 jiwa/km²</td></tr><tr><td>Total Fasilitas Umum</td><td>22 unit</td></tr><tr><td>Rata-rata Fasilitas per Desa</td><td>1.4 unit</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 12 March 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div>
+</body>
+</html>

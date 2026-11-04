@@ -87,7 +87,11 @@ function toggleUserMenu() {
 
 function logout() {
     if (confirm('Yakin ingin logout?')) {
-        window.location.href = BASE_URL + 'pages/auth/logout.php';
+        // Traditional logout redirect - use window.BASE_URL or fallback
+        const baseURL = window.BASE_URL || (window.location.protocol + '//' + window.location.host + '/Pendataan-desa/');
+        // Clear hash and redirect
+        window.location.hash = '';
+        window.location.replace(baseURL + 'pages/auth/logout.php');
     }
 }
 

@@ -1,11 +1,9 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/../config/session.php';
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
+// Initialize and validate session
+if (!initSession() || !validateSession()) {
     header('Location: ' . BASE_URL . 'pages/auth/login.php');
     exit();
 }
@@ -80,8 +78,8 @@ $current_page = $current_page ?? '';
                 </div>
                 
                 <!-- Dynamic Content -->
-                <div class="main-layout-content-wrapper" id="dynamicContent">
-                    <?php echo $content ?? ''; ?>
+                <div class="main-layout-content-wrapper">
+                    <?php echo $content; ?>
                 </div>
             </main>
             
@@ -92,6 +90,9 @@ $current_page = $current_page ?? '';
     
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <!-- Global JavaScript -->
     <script>

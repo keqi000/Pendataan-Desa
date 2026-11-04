@@ -9,15 +9,26 @@ function getBaseURL() {
         return $protocol . $domainName . '/Pendataan-desa/';
     }
     
-    // Untuk hosting
-    return $protocol . $domainName . '/';
+    // Untuk hosting dengan folder Pendataan-desa
+    return $protocol . $domainName . '/Pendataan-desa/';
 }
 
 // Konstanta BASE_URL
 define('BASE_URL', getBaseURL());
 
 // Konfigurasi API URL
-define('API_URL', BASE_URL . 'api/');
+define('API_URL', BASE_URL . 'data-publik/');
+
+// URL Public Portal
+function getPublicPortalURL() {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $domainName = $_SERVER['HTTP_HOST'];
+    if (in_array($domainName, ['localhost', '127.0.0.1', '::1']) || strpos($domainName, 'localhost:') === 0) {
+        return $protocol . $domainName . '/public-portal/';
+    }
+    return 'https://sipendesatibawa.my.id/public-portal/';
+}
+define('PUBLIC_PORTAL_URL', getPublicPortalURL());
 
 // Konfigurasi Assets
 define('ASSETS_URL', BASE_URL . 'assets/');

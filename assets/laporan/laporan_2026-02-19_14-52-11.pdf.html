@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prediksi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .kop { text-align: center; border-bottom: 3px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+        .kop h1 { margin: 0; font-size: 18px; font-weight: bold; }
+        .kop h2 { margin: 5px 0; font-size: 16px; }
+        .kop p { margin: 2px 0; font-size: 12px; }
+        .title { text-align: center; margin: 30px 0; }
+        .title h3 { margin: 0; font-size: 16px; font-weight: bold; text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        th { background-color: #f0f0f0; font-weight: bold; }
+        .signature { margin-top: 50px; float: right; text-align: center; }
+        .signature p { margin: 5px 0; }
+        .page-break { page-break-before: always; }
+        .print-controls { position: fixed; top: 10px; right: 10px; z-index: 1000; background: white; padding: 10px; border: 1px solid #ccc; }
+        .print-controls button { margin: 5px; padding: 10px 15px; cursor: pointer; }
+        @media print { .print-controls { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="print-controls">
+        <button onclick="window.print()">Print/Save as PDF</button>
+        <button onclick="downloadHTML()">Download HTML</button>
+    </div>
+    <script>
+        function downloadHTML() {
+            const element = document.documentElement;
+            const html = element.outerHTML;
+            const blob = new Blob([html], {type: "text/html"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "laporan.html";
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        setTimeout(() => {
+            if (confirm("Apakah Anda ingin mencetak laporan sekarang?")) {
+                window.print();
+            }
+        }, 1000);
+    </script>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN PREDIKSI PENDUDUK 5 TAHUN</h3>
+            <p>Tahun 2025</p>
+        </div><h4>Prediksi Penduduk 5 Tahun ke Depan</h4><table><tr><th>Desa</th><th>Tahun</th><th>Total Penduduk</th><th>Growth Rate</th></tr><tr><td>Balahu</td><td>2031</td><td>70</td><td>2.00%</td></tr><tr><td>Botumoputi</td><td>2031</td><td>74</td><td>2.00%</td></tr><tr><td>Buhu</td><td>2031</td><td>61</td><td>2.00%</td></tr><tr><td>Datahu</td><td>2031</td><td>68</td><td>2.00%</td></tr><tr><td>Dunggala</td><td>2031</td><td>76</td><td>2.00%</td></tr><tr><td>Ilomata</td><td>2031</td><td>87</td><td>2.00%</td></tr><tr><td>Iloponu</td><td>2031</td><td>67</td><td>2.00%</td></tr><tr><td>Isimu Raya</td><td>2031</td><td>60</td><td>2.00%</td></tr><tr><td>Isimu Selatan</td><td>2031</td><td>68</td><td>2.00%</td></tr><tr><td>Isimu Utara</td><td>2031</td><td>54</td><td>2.00%</td></tr><tr><td>Labanu</td><td>2031</td><td>67</td><td>2.00%</td></tr><tr><td>Molowahu</td><td>2031</td><td>54</td><td>2.00%</td></tr><tr><td>Motilango</td><td>2031</td><td>50</td><td>2.00%</td></tr><tr><td>Reksonegoro</td><td>2031</td><td>77</td><td>2.00%</td></tr><tr><td>Tolotio</td><td>2031</td><td>71</td><td>2.00%</td></tr><tr><td>Ulobua</td><td>2031</td><td>54</td><td>2.00%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 19 February 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN DATA UMUM PREDIKSI</h3>
+            <p>Tahun 2025</p>
+        </div><h4>Data Umum Prediksi</h4><table><tr><th>Indikator</th><th>Nilai</th></tr><tr><td>Rata-rata Tingkat Pertumbuhan</td><td>2% per tahun</td></tr><tr><td>Tingkat Kepercayaan</td><td>85%</td></tr><tr><td>Metode Prediksi</td><td>Linear Regression</td></tr><tr><td>Prediksi Total Penduduk 2031</td><td>1,058 jiwa</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 19 February 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div><div class="page-break"></div>
+        <div class="kop">
+            <h1>PEMERINTAH KABUPATEN GORONTALO</h1>
+            <h2>KECAMATAN TIBAWA</h2>
+            <p>Alamat: Jl. Trans Sulawesi, Tibawa, Kabupaten Gorontalo, Gorontalo</p>
+            <p>Telepon: (0435) 123456 | Email: kecamatan.tibawa@gorontalokab.go.id</p>
+        </div>
+        <div class="title">
+            <h3>LAPORAN PROYEKSI KEBUTUHAN PEMBANGUNAN</h3>
+            <p>Tahun 2025</p>
+        </div><h4>Proyeksi Kebutuhan Pembangunan</h4><table><tr><th>Sektor</th><th>Kebutuhan</th></tr><tr><td>Fasilitas Pendidikan</td><td>Cukup</td></tr><tr><td>Infrastruktur Jalan</td><td>0 km perlu perbaikan</td></tr><tr><td>Dampak Program</td><td>Peningkatan kesejahteraan +47.6%</td></tr></table><br>
+        <div class="signature">
+            <p>Tibawa, 19 February 2026</p>
+            <p>Mengetahui,</p>
+            <p>Camat Tibawa</p>
+            <br><br><br>
+            <p><strong>Drs. H. ABDUL RAHMAN, M.Si</strong></p>
+            <p>NIP. 19650815 199203 1 004</p>
+        </div>
+</body>
+</html>

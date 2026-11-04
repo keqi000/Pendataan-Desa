@@ -3,6 +3,8 @@ class PendataanDesa {
     constructor() {
         this.baseURL = this.getBaseURL();
         this.apiURL = this.baseURL + 'api/';
+        this.sessionHeartbeatInterval = null;
+        this.sessionWarningShown = false;
         this.init();
     }
     
@@ -23,6 +25,7 @@ class PendataanDesa {
         this.setupThemeToggle();
         this.setupHashNavigation();
         this.setupGlobalEvents();
+        // Traditional session - no heartbeat needed
     }
     
     // Page Loader Management
@@ -126,7 +129,7 @@ class PendataanDesa {
     navigateToPage(page) {
         this.showContentLoader();
         
-        // Simulate page transition
+        // Traditional redirect instead of AJAX
         setTimeout(() => {
             window.location.href = this.baseURL + page;
         }, 300);
@@ -290,6 +293,13 @@ class PendataanDesa {
             day: 'numeric'
         }).format(new Date(date));
     }
+    
+    // Session Management - Traditional (No AJAX)
+    startSessionHeartbeat() {
+        // Traditional session - no heartbeat needed
+        // Session validation handled by PHP on each page load
+        console.log('Traditional session management - no AJAX heartbeat');
+    }
 }
 
 // Global Functions
@@ -331,8 +341,11 @@ function navigateToPage(page) {
     }
 }
 
+// Global loadPage function - Traditional Navigation
 function loadPage(page) {
-    if (window.mainLayoutComponent) {
-        window.mainLayoutComponent.loadPage(page);
-    }
+    console.log('🌐 Traditional navigation to:', page);
+    // Traditional redirect instead of AJAX
+    const userRole = document.querySelector('.sidebar-user-role')?.textContent.toLowerCase().includes('admin') ? 'admin' : 'user';
+    const baseURL = window.BASE_URL || pendataanDesa?.baseURL;
+    window.location.href = `${baseURL}pages/${userRole}/${page}/${page}.php`;
 }

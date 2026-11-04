@@ -19,7 +19,7 @@ require_once __DIR__ . '/../../config/config.php';
                 <i class="fas fa-user-circle"></i>
             </button>
             <div class="header-user-menu-dropdown" id="userMenuDropdown">
-                <a href="#" class="header-dropdown-item" onclick="loadPage('pengaturan'); toggleUserMenu();">
+                <a href="<?php echo BASE_URL; ?>pages/<?php echo $_SESSION['user_role'] === 'admin_kecamatan' ? 'admin' : 'user'; ?>/pengaturan/pengaturan.php" class="header-dropdown-item">
                     <i class="fas fa-user"></i>
                     Profil Pengguna
                 </a>
