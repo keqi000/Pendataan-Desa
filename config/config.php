@@ -1,8 +1,9 @@
 <?php
 // Konfigurasi Base URL dinamis untuk localhost dan hosting
 function getBaseURL() {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-    $domainName = $_SERVER['HTTP_HOST'];
+    $serverPort = (int)($_SERVER['SERVER_PORT'] ?? 0);
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $serverPort === 443) ? "https://" : "http://";
+    $domainName = $_SERVER['HTTP_HOST'] ?? 'localhost';
     
     // Deteksi localhost
     if (in_array($domainName, ['localhost', '127.0.0.1', '::1']) || strpos($domainName, 'localhost:') === 0) {
@@ -21,12 +22,7 @@ define('API_URL', BASE_URL . 'data-publik/');
 
 // URL Public Portal
 function getPublicPortalURL() {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-    $domainName = $_SERVER['HTTP_HOST'];
-    if (in_array($domainName, ['localhost', '127.0.0.1', '::1']) || strpos($domainName, 'localhost:') === 0) {
-        return $protocol . $domainName . '/public-portal/';
-    }
-    return 'https://sipendesatibawa.my.id/public-portal/';
+    return BASE_URL . 'public-portal/';
 }
 define('PUBLIC_PORTAL_URL', getPublicPortalURL());
 
